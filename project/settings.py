@@ -120,10 +120,3 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-CELERY_BEAT_SCHEDULE  = {
-    'testname':{
-        'task' : 'PA.tasks.func', # path func
-        'schedule': 10 ,
-        # 'schedule':crontab(minute='*/30'),
-    }
-}
