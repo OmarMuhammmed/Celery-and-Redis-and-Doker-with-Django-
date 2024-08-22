@@ -1,12 +1,11 @@
 from django.shortcuts import render
 
-from .tasks import add
+from .tasks import print_nums
 
 # Create your views here.
 
 def index(request):
     # call celery task 
-    
-    result = add.delay(4, 6)
-    print('celery is ruuuun')
-    return render(request,'index.html',{'result':result})
+    print_nums.delay()
+     
+    return render(request,'index.html')

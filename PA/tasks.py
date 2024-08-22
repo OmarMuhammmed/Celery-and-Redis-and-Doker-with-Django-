@@ -1,5 +1,8 @@
+import time
 from celery import shared_task
 
 @shared_task
-def add(x, y):
-    return x + y
+def print_nums():
+   for x in range(10):
+        print(x)
+        time.sleep(.5)

@@ -1,0 +1,27 @@
+# Setup Servcis
+# in file .yml spaces senstive
+
+version: '3' # docker version 
+
+services:
+  djangoserver:
+    container_name: Backend               # name apear in docker (optional) 
+    build: .                              # where the command run 
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/app # share  refresh edits between mypc with docker
+
+  # servis to config redis , celery   
+  redis:
+    image: redis:latest
+    container_name: redis
+
+  celery:
+    container_name: celery
+    build: .
+    command: celery -A project worker -l INFO
+    restart: always
+    depends_on: 
+      - redis
